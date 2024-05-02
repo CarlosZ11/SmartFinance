@@ -1,3 +1,4 @@
+import 'package:calculator_app/ui/home/pages/amortizacion/amortizacion.dart';
 import 'package:calculator_app/ui/home/pages/gradientes/gradientes.dart';
 import 'package:calculator_app/ui/home/pages/interes_compuesto/interes_compuesto.dart';
 import 'package:calculator_app/ui/home/pages/interes_simple/interes_simple.dart';
@@ -45,6 +46,8 @@ class _HomePageState extends State<HomePage> {
       container = const AnualidadesPage();
     }else if (currentPage == DrawerSections.gradientes) {
       container = GradientesPage();
+    }else if (currentPage == DrawerSections.amortizacion) {
+      container = AmortizacionPage();
     }
     return isLoading
       ? const LoadingPage()
@@ -86,6 +89,7 @@ class _HomePageState extends State<HomePage> {
         menuItem(2, "Interés Compuesto", Remix.exchange_funds_line,currentPage == DrawerSections.interes_compuesto ? true : false),
         menuItem(3, "Anualidades", Remix.calendar_todo_fill, currentPage == DrawerSections.anualidades ? true : false),
         menuItem(4, "Gradientes", Remix.line_chart_line, currentPage == DrawerSections.gradientes ? true : false),
+        menuItem(5, "Amortización", Remix.line_chart_line, currentPage == DrawerSections.amortizacion ? true : false),
       ],
     );
   }
@@ -112,6 +116,9 @@ class _HomePageState extends State<HomePage> {
             } else if (id == 4) {
               currentPage = DrawerSections.gradientes;
               currentTitle = 'Gradientes';
+            } else if (id == 5) {
+              currentPage = DrawerSections.amortizacion;
+              currentTitle = 'Amortización';
             }
           });
         },
@@ -151,4 +158,5 @@ enum DrawerSections {
   interes_compuesto,
   anualidades,
   gradientes,
+  amortizacion
 }
