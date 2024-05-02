@@ -45,7 +45,7 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
                   Icon(
                     Remix.exchange_dollar_line,
                     size: 135,
-                    color: Color(0xFF9E75FF),
+                    color: Color(0xFF29E9FF),
                   ),
                 ],
               ),
@@ -196,7 +196,7 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
                           title: Text(
                             'Resultado',
                             style: GoogleFonts.saira(
-                              color: const Color(0xFF9E75FF),
+                              color: const Color(0xFF29E9FF),
                               fontWeight: FontWeight.bold,
                             ),
                           ),
