@@ -158,5 +158,5 @@ enum DrawerSections {
   interes_compuesto,
   anualidades,
   gradientes,
-  amortizacion
+  amortizacion,
 }
