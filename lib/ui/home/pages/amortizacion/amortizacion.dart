@@ -204,7 +204,7 @@ class AmortizacionPage extends StatelessWidget {
                             child: Row(
                               children: [
                                 const Icon(
-                                  Remix.exchange_funds_line,
+                                  Remix.money_pound_circle_line,
                                   color: Color(0xFF29E9FF),
                                   size: 29,
                                 ),
@@ -270,7 +270,7 @@ class AmortizacionPage extends StatelessWidget {
                             child: Row(
                               children: [
                                 const Icon(
-                                  Remix.discount_percent_fill,
+                                  Remix.money_euro_circle_line,
                                   color: Color(0xFF29E9FF),
                                   size: 29,
                                 ),
@@ -303,7 +303,7 @@ class AmortizacionPage extends StatelessWidget {
                             child: Row(
                               children: [
                                 const Icon(
-                                  Remix.time_fill,
+                                  Remix.money_rupee_circle_line,
                                   color: Color(0xFF29E9FF),
                                   size: 29,
                                 ),

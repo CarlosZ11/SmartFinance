@@ -93,7 +93,7 @@ class _CapitalizacionCompuestaState extends State<CapitalizacionCompuesta> {
               Padding(
                 padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
                 child: Text(
-                  "Para hallar la Capitalización Simple se utiliza la siguiente formula: I = C * (1 + i) ^ N \nDonde C es capital, i es tasa de interés, N es tiempo y I responde a los intereses generados",
+                  "Para hallar la Capitalización Compuesta se utiliza la siguiente formula: VF = C * (1 + i) ^ N \nDonde C es capital, i es tasa de interés, N es tiempo y VF responde a el Valor Futuro",
                   style: GoogleFonts.saira(
                     fontSize: 15,
                     fontWeight: FontWeight.bold

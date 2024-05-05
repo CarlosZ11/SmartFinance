@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
         menuItem(2, "Interés Compuesto", Remix.exchange_funds_line,currentPage == DrawerSections.interes_compuesto ? true : false),
         menuItem(3, "Anualidades", Remix.calendar_todo_fill, currentPage == DrawerSections.anualidades ? true : false),
         menuItem(4, "Gradientes", Remix.line_chart_line, currentPage == DrawerSections.gradientes ? true : false),
-        menuItem(5, "Amortización", Remix.line_chart_line, currentPage == DrawerSections.amortizacion ? true : false),
+        menuItem(5, "Amortización", Remix.hand_coin_line, currentPage == DrawerSections.amortizacion ? true : false),
         menuItem(6, "TIR", Remix.line_chart_line, currentPage == DrawerSections.tir ? true : false),
       ],
     );
@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
               currentTitle = 'Gradientes';
             } else if (id == 5) {
               currentPage = DrawerSections.amortizacion;
-              currentTitle = 'Amortización';
+              currentTitle = 'Amortización y Capitalización';
             }
             else if (id == 6) {
               currentPage = DrawerSections.tir;
