@@ -2,10 +2,8 @@
 import 'package:calculator_app/ui/home/pages/amortizacion/pages/capitalizacion_compuesta.dart';
 import 'package:calculator_app/ui/home/pages/amortizacion/pages/capitalizacion_simple.dart';
 import 'package:calculator_app/ui/home/pages/amortizacion/pages/sistema_americano.dart';
-import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/Capital.dart';
-import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/Monto_periodo.dart';
-import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/Tasa_interes.dart';
-import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/Tiempo.dart';
+import 'package:calculator_app/ui/home/pages/amortizacion/pages/sistema_frances.dart';
+import 'package:calculator_app/ui/home/pages/amortizacion/pages/sistema_aleman.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
@@ -267,7 +265,7 @@ class AmortizacionPage extends StatelessWidget {
                               backgroundColor: const Color(0xFFF5F6F9),
                             ),
                             onPressed: () {
-                             Navigator.push(context, MaterialPageRoute(builder: (context) => const TasaInteresPage2(),));
+                             Navigator.push(context, MaterialPageRoute(builder: (context) => const SistemaFrances(),));
                             },
                             child: Row(
                               children: [
@@ -300,7 +298,7 @@ class AmortizacionPage extends StatelessWidget {
                               backgroundColor: const Color(0xFFF5F6F9),
                             ),
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const TiempoPage2(),));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const SistemaAleman(),));
                             },
                             child: Row(
                               children: [
