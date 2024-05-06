@@ -87,48 +87,48 @@ class AmortizacionPage extends StatelessWidget {
                         ]
                       ),
                     ),
-                    const SizedBox(height: 12,),
-                    RichText(
-                      textAlign: TextAlign.justify,
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: "Sistema Americano: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
-                          TextSpan(
-                            text: "Son Cuotas periódicas que cubren solo los intereses, mientras que el capital se paga en su totalidad al final del plazo del préstamo.", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
-                        ]
-                      ),
-                    ),
-                    const SizedBox(height: 6,),
-                    RichText(
-                      textAlign: TextAlign.justify,
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: "Sistema Francés: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
-                          TextSpan(
-                            text: "Calcula cuotas periódicas que incluyen tanto intereses como amortización del capital. ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
-                        ]
-                      ),
-                    ),
-                    const SizedBox(height: 6,),
-                    RichText(
-                      textAlign: TextAlign.justify,
-                      text: TextSpan(
-                        children: <TextSpan>[
-                          TextSpan(
-                            text: "Sistema alemán: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
-                          TextSpan(
-                            text: " Son cuotas periódicas que son fijas, pero a medida que se amortiza el capital, los intereses disminuyen.", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
-                        ]
-                      ),
-                    )
+                    // const SizedBox(height: 12,),
+                    // RichText(
+                    //   textAlign: TextAlign.justify,
+                    //   text: TextSpan(
+                    //     children: <TextSpan>[
+                    //       TextSpan(
+                    //         text: "Sistema Americano: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                    //       ),
+                    //       TextSpan(
+                    //         text: "Son Cuotas periódicas que cubren solo los intereses, mientras que el capital se paga en su totalidad al final del plazo del préstamo.", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                    //       ),
+                    //     ]
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 6,),
+                    // RichText(
+                    //   textAlign: TextAlign.justify,
+                    //   text: TextSpan(
+                    //     children: <TextSpan>[
+                    //       TextSpan(
+                    //         text: "Sistema Francés: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                    //       ),
+                    //       TextSpan(
+                    //         text: "Calcula cuotas periódicas que incluyen tanto intereses como amortización del capital. ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                    //       ),
+                    //     ]
+                    //   ),
+                    // ),
+                    // const SizedBox(height: 6,),
+                    // RichText(
+                    //   textAlign: TextAlign.justify,
+                    //   text: TextSpan(
+                    //     children: <TextSpan>[
+                    //       TextSpan(
+                    //         text: "Sistema alemán: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                    //       ),
+                    //       TextSpan(
+                    //         text: " Son cuotas periódicas que son fijas, pero a medida que se amortiza el capital, los intereses disminuyen.", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                    //       ),
+                    //     ]
+                    //   ),
+                    // )
                   ],
                 )
               ),

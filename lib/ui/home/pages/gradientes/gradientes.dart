@@ -1,6 +1,6 @@
 import 'package:calculator_app/ui/home/pages/gradientes/pages/aritmetico.dart';
+import 'package:calculator_app/ui/home/pages/gradientes/pages/escalonado.dart';
 import 'package:calculator_app/ui/home/pages/gradientes/pages/geometrico.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/pages/capital.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
@@ -169,7 +169,7 @@ class GradientesPage extends StatelessWidget {
                               backgroundColor: const Color(0xFFF5F6F9),
                             ),
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const CapitalPage(),));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const EscalonadoPage(),));
                             },
                             child: Row(
                               children: [

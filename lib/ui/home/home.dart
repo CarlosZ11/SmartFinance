@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
               currentTitle = 'Gradientes';
             } else if (id == 5) {
               currentPage = DrawerSections.amortizacion;
-              currentTitle = 'Amortización y Capitalización';
+              currentTitle = 'Amortización y Cap';
             }
             else if (id == 6) {
               currentPage = DrawerSections.tir;
