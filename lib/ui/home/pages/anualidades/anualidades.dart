@@ -30,23 +30,19 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(vertical: 30),
+      padding: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         children: [
           const Padding(
-            padding: EdgeInsets.only(top: 25),
+            padding: EdgeInsets.only(top: 12),
             child: SizedBox(
-              height: 125,
-              width: 125,
+              height: 0,
+              width: 0,
               child: Stack(
                 fit: StackFit.expand,
                 clipBehavior: Clip.none,
                 children: [
-                  Icon(
-                    Remix.exchange_dollar_line,
-                    size: 135,
-                    color: Color(0xFF29E9FF),
-                  ),
+                  
                 ],
               ),
             ),
@@ -58,13 +54,171 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
               left: 30,
               bottom: 12,
             ),
-            child: Text(
-              "Las anualidades son una serie de pagos o depósitos iguales que se realizan o reciben a intervalos regulares durante un período específico de tiempo. \n\n\ni = Tasa de la anualidad\nn = Número de periodos de capitalización o de pago de la anualidad.\nValor presente= Valor de la anualidad.\nValor final = El Monto final de la Anualidad\n​Renta: pago o depósito que se realiza de manera regular",
-              style: GoogleFonts.saira(
-                fontSize: 15,
-                fontWeight: FontWeight.bold,
+            child: RichText(
+              textAlign: TextAlign.justify,
+              text: TextSpan(
+                children: <TextSpan>[
+                  TextSpan(
+                    text: " Las anualidades ",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        "son serie de pagos o depósitos iguales que se realizan o reciben a intervalos regulares durante un período específico de tiempo.\n\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "La Tasa de Interés (i) ",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        "Representa la tasa de interés aplicada a la anualidad, expresada como un porcentaje.\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                   TextSpan(
+                    text: " El Número de Períodos (n)",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        " Indica la cantidad de períodos en los que se realizarán los pagos o depósitos.\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: " la Renta ",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        "Corresponde al pago o depósito que se realiza de manera regular en la anualidad.\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                   TextSpan(
+                    text: "Monto de la Anualidad ",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        " Es el valor inicial de la anualidad, en caso de haberlo.\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Fórmulas:\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        "Valor Futuro (VF): Representa el valor acumulado de una anualidad en un momento futuro.\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Fórmula (Renta):\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "   VF = M * (((1 + i)^n - 1) / i)\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "Fórmula (Monto):\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "    VF = R / (((1 + i)^n - 1) / i)\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text:
+                        "Valor Presente (VP): Indica el valor actual de una anualidad, es decir, su valor en el presente.\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: " Fórmula:\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  TextSpan(
+                    text: "    VP = R * ((1 - (1 + i)^-n) / i)\n",
+                    style: GoogleFonts.saira(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                  ),
+                ],
               ),
-              textAlign: TextAlign.center,
             ),
           ),
           Row(
@@ -85,7 +239,7 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
                   });
                 },
                 child: Text(
-                  ' Valor Futuro ',
+                  '  Valor Futuro  ',
                   style: GoogleFonts.saira(
                     fontSize: 17,
                     fontWeight: FontWeight.bold,
@@ -118,24 +272,6 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
             ],
           ),
           const SizedBox(height: 20),
-          InputTextFormField(
-            labelText: "Tasa de Interés(i)",
-            prefixIcon: Remix.discount_percent_fill,
-            valueText: '',
-            controller: tasaController,
-          ),
-          InputTextFormField(
-            labelText: "Número de Períodos(n)",
-            prefixIcon: Remix.time_fill,
-            valueText: '',
-            controller: periodosController,
-          ),
-          InputTextFormField(
-            labelText: "Renta",
-            prefixIcon: Remix.coins_fill,
-            valueText: '',
-            controller: rentaController,
-          ),
           if (selectedOption == 'Valor Futuro') ...[
             InputTextFormField(
               labelText: "Monto de la Anualidad",
@@ -144,114 +280,175 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
               controller: montoController,
             ),
           ],
-          const SizedBox(height: 50),
-          SizedBox(
-            width: double.infinity,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.white, backgroundColor: const Color(0xFF171731),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
+          InputTextFormField(
+            labelText: "Renta",
+            prefixIcon: Remix.coins_fill,
+            valueText: '',
+            controller: rentaController,
+          ),
+
+     Row(
+  children: [
+    Expanded(
+      child: Stack(
+        children: [
+          InputTextFormField(
+            labelText: "Número de Períodos(n)",
+            prefixIcon: Remix.time_fill,
+            valueText: '',
+            controller: periodosController,
+          ),
+          Positioned(
+            right: 0,
+            top: 0,
+            bottom: 0,
+            child: PopupMenuButton<String>(
+              icon: Icon(Icons.more_vert),
+              onSelected: (String value) {
+                // Aquí puedes manejar la lógica cuando se selecciona una opción del menú
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+                const PopupMenuItem<String>(
+                  value: 'Mensual',
+                  child: Text('Mensual'),
                 ),
-              ),
-              onPressed: () {
-                setState(() {
-                  try {
-                    tasa = double.parse(tasaController.text) / 100;
-                    periodos = int.parse(periodosController.text);
-                    renta = rentaController.text.isEmpty
-                        ? 0
-                        : double.parse(rentaController.text);
+                const PopupMenuItem<String>(
+                  value: 'Trimestral',
+                  child: Text('Trimestral'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'Semestral',
+                  child: Text('Semestral'),
+                ),
+                const PopupMenuItem<String>(
+                  value: 'Anual',
+                  child: Text('Anual'),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  ],
+),
 
-                    if (selectedOption == 'Valor Futuro') {
-                      if (montoController.text.isEmpty) {
-                        resultado = calcularRenta(0, tasa, periodos, renta);
-                        formula =
-                            'VF = R / (((pow(1 + i, n) - 1) / i))';
+          InputTextFormField(
+            labelText: "Tasa de Interés(i)",
+            prefixIcon: Remix.discount_percent_fill,
+            valueText: '',
+            controller: tasaController,
+          ),
+          const SizedBox(height: 50),
+          Center(
+            child: Container(
+              constraints: BoxConstraints(maxWidth: 1000),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.symmetric(vertical: 20, horizontal: 100),
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF171731),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                onPressed: () {
+                  setState(() {
+                    try {
+                      tasa = double.parse(tasaController.text) / 100;
+                      periodos = int.parse(periodosController.text);
+                      renta = rentaController.text.isEmpty
+                          ? 0
+                          : double.parse(rentaController.text);
+
+                      if (selectedOption == 'Valor Futuro') {
+                        if (montoController.text.isEmpty) {
+                          resultado =
+                              calcularRenta(0, tasa, periodos, renta);
+                          formula =
+                              'VF = R / (((pow(1 + i, n) - 1) / i))';
+                        } else {
+                          monto = double.parse(montoController.text);
+                          resultado =
+                              calcularRenta(monto, tasa, periodos, renta);
+                          formula =
+                              'VF = R * (((pow(1 + i, n) - 1) / i))';
+                        }
                       } else {
-                        monto = double.parse(montoController.text);
-                        resultado = calcularRenta(monto, tasa, periodos, renta);
-                        formula =
-                            'VF = R * (((pow(1 + i, n) - 1) / i))';
+                        resultado = calcularValorPresente(renta, tasa, periodos);
+                        formula = 'VA = R * ((1 - pow(1 + i, -n)) / i)';
                       }
-                    } else {
-                      resultado =
-                          calcularValorPresente(renta, tasa, periodos);
-                      formula =
-                          'VA = R * ((1 - pow(1 + i, -n)) / i)';
-                    }
 
-                    // Vaciar los campos después de calcular
-                    tasaController.clear();
-                    periodosController.clear();
-                    rentaController.clear();
-                    if (selectedOption == 'Valor Futuro') {
-                      montoController.clear();
-                    }
+                      tasaController.clear();
+                      periodosController.clear();
+                      rentaController.clear();
+                      if (selectedOption == 'Valor Futuro') {
+                        montoController.clear();
+                      }
 
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: Text(
-                            'Resultado',
-                            style: GoogleFonts.saira(
-                              color: const Color(0xFF29E9FF),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          content: Text(
-                            'Resultado: \$${resultado.toStringAsFixed(2)}',
-                            style: GoogleFonts.saira(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16,
-                            ),
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: Text(
-                                'OK',
-                                style: GoogleFonts.saira(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: Text(
+                              'Resultado',
+                              style: GoogleFonts.saira(
+                                color: const Color(0xFF29E9FF),
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ],
-                        );
-                      },
-                    );
-                  } catch (e) {
-                    // Manejar errores al parsear los campos
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: const Text('Error'),
-                          content: const Text(
-                              'Por favor, ingrese valores válidos en todos los campos.'),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('OK'),
+                            content: Text(
+                              'Resultado: \$${resultado.toStringAsFixed(2)}',
+                              style: GoogleFonts.saira(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 16,
+                              ),
                             ),
-                          ],
-                        );
-                      },
-                    );
-                  }
-                });
-              },
-              child: Text(
-                'Calcular Resultado',
-                style: GoogleFonts.saira(
-                  fontSize: 17,
-                  fontWeight: FontWeight.bold,
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  'OK',
+                                  style: GoogleFonts.saira(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } catch (e) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Error'),
+                            content: const Text(
+                                'Por favor, ingrese valores válidos en todos los campos.'),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('OK'),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                  });
+                },
+                child: Text(
+                  'Calcular Resultado',
+                  style: GoogleFonts.saira(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
