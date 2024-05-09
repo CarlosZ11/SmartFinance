@@ -103,7 +103,7 @@ class GradientesPage extends StatelessWidget {
                               backgroundColor: const Color(0xFFF5F6F9),
                             ),
                             onPressed: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => const AritmeticoPage(),));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => AritmeticoPage(),));
                             },
                             child: Row(
                               children: [

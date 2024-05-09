@@ -5,6 +5,7 @@ import 'package:calculator_app/ui/home/pages/interes_simple/pages/monto.dart';
 import 'package:calculator_app/ui/home/pages/interes_simple/pages/tasa_interes.dart';
 import 'package:calculator_app/ui/home/pages/interes_simple/pages/tiempo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -37,7 +38,6 @@ class InteresSimplePage extends StatelessWidget {
                 width: width,
                 child: Column(
                   children: [
-                    const SizedBox(height: 5,),
                     RichText(
                       textAlign: TextAlign.justify,
                       text: TextSpan(
@@ -71,10 +71,15 @@ class InteresSimplePage extends StatelessWidget {
                           TextSpan(
                             text: " o Valor Presente (VP) por un tiempo t, expresado en años, así tenemos:", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
                           ),
-                          TextSpan(
-                            text: "\nInterés simple I = Cit ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
                         ]
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Math.tex(
+                      r'I\:=\:Cit',
+                      textStyle: GoogleFonts.saira(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600
                       ),
                     ),
                     RichText(
@@ -90,10 +95,15 @@ class InteresSimplePage extends StatelessWidget {
                           TextSpan(
                             text: " al final del periodo o Valor Futuro (VF) se obtiene entonces con la formula:", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
                           ),
-                          TextSpan(
-                            text: " M = C (1 + it) o \nVF = VP (1 + it).", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
                         ]
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Math.tex(
+                      r'M\:=\:C\:\left(1\:+\:it\right)\:\:ó\:\:VF\:=\:VP\:\left(1\:+\:it\right)',
+                      textStyle: GoogleFonts.saira(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600
                       ),
                     ),
                   ],

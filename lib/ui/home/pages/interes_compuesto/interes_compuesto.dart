@@ -4,6 +4,7 @@ import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/Tasa_intere
 import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/Tiempo.dart';
 import 'package:calculator_app/ui/home/pages/interes_compuesto/pages/monto_final.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -31,7 +32,7 @@ class InteresCompuestoPage extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-                height: height * 0.45,
+                height: height * 0.43,
                 width: width,
                 child: Column(
                   children: [
@@ -110,20 +111,22 @@ class InteresCompuestoPage extends StatelessWidget {
                           TextSpan(
                             text: "Formula: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
                           ),
-                          TextSpan(
-                            text: "En realidad cuando buscamos el interés compuesto únicamente usamos la siguiente formula: ", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
-                          ),
-                          TextSpan(
-                            text: "VF = VP (1 + I).", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
-                          ),
                         ]
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Math.tex(
+                      r'VF=VP\left(1+I\right)',
+                      textStyle: GoogleFonts.saira(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600
                       ),
                     ),
                   ],
                 )
               ),
               Container(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: 10),
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(

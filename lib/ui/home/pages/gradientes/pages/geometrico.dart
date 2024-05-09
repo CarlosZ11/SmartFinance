@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -17,6 +18,29 @@ class GeometricoCalculator {
     double valorFuturo = (seriePagos * ((pow((1 + tasaInteres), nPeriodos) - pow((1 - variacion), nPeriodos))) / (variacion + tasaInteres));
     return {'valorPresente': valorPresente, 'valorFuturo': valorFuturo};
   }
+
+  static String obtenerFormulaValorPresente(String tipoGradiente) {
+    switch (tipoGradiente) {
+      case 'Creciente':
+        return r'VP=\left[\frac{A\left[\left(1+G\right)^n\left(1+i\right)^{-n}-1\right]}{G-1}\right]';
+      case 'Decreciente':
+        return r'VP=\left[\frac{A\left[1-\left(1-G\right)^n\left(1+i\right)^{-n}\right]}{G+i}\right]';
+      default:
+        return '';
+    }
+  }
+
+  static String obtenerFormulaValorFuturo(String tipoGradiente) {
+    switch (tipoGradiente) {
+      case 'Creciente':
+        return r'VF=\left[\frac{A\left[\left(1+G\right)^n-\left(1+i\right)^n\right]}{G-i}\right]';
+      case 'Decreciente':
+        return r'VF=\left[\frac{A\left[\left(1+i\right)^n-\left(1-G\right)^n\right]}{G+i}\right]';
+      default:
+        return '';
+    }
+  }
+
 }
 
 class GeometricoPage extends StatefulWidget {
@@ -35,6 +59,21 @@ class _GeometricoPageState extends State<GeometricoPage> {
   String? tipoGradiente; // Creciente, decreciente
   double? valorPresente;
   double? valorFuturo;
+
+  void initState() {
+    super.initState();
+    tipoGradiente = 'Creciente';
+  }
+
+  String obtenerFormulaValorPresente() {
+    if (tipoGradiente == null) return '';
+    return GeometricoCalculator.obtenerFormulaValorPresente(tipoGradiente!);
+  }
+
+  String obtenerFormulaValorFuturo() {
+    if (tipoGradiente == null) return '';
+    return GeometricoCalculator.obtenerFormulaValorFuturo(tipoGradiente!);
+  }
 
   void calcularResultado() {
     double seriePagos = double.tryParse(seriePagosController.text) ?? 0;
@@ -172,39 +211,51 @@ class _GeometricoPageState extends State<GeometricoPage> {
         iconTheme: const IconThemeData(color: Color(0xFF29E9FF)),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.symmetric(vertical: 7),
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 1),
-              child: SizedBox(
-                height: 125,
-                width: 125,
-                child: Stack(
-                  fit: StackFit.expand,
-                  clipBehavior: Clip.none,
-                  children: [
-                    Icon(
-                      Remix.nft_fill,
-                      size: 135,
-                      color: Color(0xFF29E9FF),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+              child: Column(
+                children: [
+                  RichText(
+                    textAlign: TextAlign.justify,
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: "Geométrico", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
+                        TextSpan(
+                          text: " es un tipo de gradiente el cual cada pago es igual al del periodo anterior," 
+                                " aumentando o dosminuyendo en un mismo porcentaje.", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                        TextSpan(
+                          text: " Donde VP es valor presente y VF es valor futuro", 
+                          style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ]
                     ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 20,),
+                  Math.tex(
+                    obtenerFormulaValorPresente(),
+                    textStyle: GoogleFonts.saira(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
+                  const SizedBox(height: 20,),
+                  Math.tex(
+                    obtenerFormulaValorFuturo(),
+                    textStyle: GoogleFonts.saira(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
+                ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
-              child: Text(
-                "En gradientes se pueden hallar el Valor Presente (VP) o Valor Futuro (VF)\nDonde P ó VP es valor presente, F ó VF es valor futuro, i es tasa de interés y A es primer pago, G es gradiente y N número de periodos",
-                style: GoogleFonts.saira(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            const SizedBox(height: 20,),
+            const SizedBox(height: 30,),
             Container(
               height: 60,
               width: 400,
@@ -251,10 +302,10 @@ class _GeometricoPageState extends State<GeometricoPage> {
               ),
             ),
             const SizedBox(height: 10,),
-            InputTextFormField(labelText: "Valor cuota", prefixIcon: Remix.coins_fill, valueText: '', controller: seriePagosController,),
-            InputTextFormField(labelText: "Tasa de Interés", prefixIcon: Remix.discount_percent_fill, valueText: '', controller: tasaInteresController,),
-            InputTextFormField(labelText: "Variación", prefixIcon: Remix.line_chart_fill, valueText: '', controller: variacionController,),
-            InputTextFormField(labelText: "Número periodos", prefixIcon: Remix.numbers_line, valueText: '', controller: nPeriodosController,),
+            InputTextFormField(labelText: "Valor cuota (A)", prefixIcon: Remix.coins_fill, valueText: '', controller: seriePagosController,),
+            InputTextFormField(labelText: "Tasa de Interés (i)", prefixIcon: Remix.discount_percent_fill, valueText: '', controller: tasaInteresController,),
+            InputTextFormField(labelText: "Variación (G)", prefixIcon: Remix.line_chart_fill, valueText: '', controller: variacionController,),
+            InputTextFormField(labelText: "Número periodos (n)", prefixIcon: Remix.numbers_line, valueText: '', controller: nPeriodosController,),
             const SizedBox(height: 20,),
             Container(
               height: 50,

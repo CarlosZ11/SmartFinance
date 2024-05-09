@@ -1,6 +1,7 @@
 import 'package:calculator_app/ui/widgets/custom_alert.dart';
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -91,13 +92,34 @@ class _InteresPageState extends State<InteresPage> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
-                child: Text(
-                  "Para hallar el Interés se utiliza la siguiente formula I = Cit\nDonde I es interés, C es capital, i es tasa de interés y t es tiempo",
-                  style: GoogleFonts.saira(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold
-                  ),
-                  textAlign: TextAlign.center,
+                child: Column(
+                  children: [
+                    Text(
+                      "Para hallar el Interés se utiliza la siguiente formula:",
+                      style: GoogleFonts.saira(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 10,),
+                    Math.tex(
+                      r'I\:=\:Cit',
+                      textStyle: GoogleFonts.saira(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    Text(
+                      "Donde I es interés, C es capital, i es tasa de interés y t es tiempo",
+                      style: GoogleFonts.saira(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(height: 30,),

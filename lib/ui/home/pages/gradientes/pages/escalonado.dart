@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
@@ -39,47 +40,6 @@ class _EscalonadoPageState extends State<EscalonadoPage> {
     int nPeriodos = int.tryParse(nPeriodosController.text) ?? 0;
     int plazoObligacion = int.tryParse(plazoObligacionController.text) ?? 0;
     double tasaIncremento = double.tryParse(tasaIncrementoController.text) ?? 0;
-
-    // if (tipoGradiente == null) {
-    //   // Mostrar mensaje de error si no se ha seleccionado un tipo de gradiente
-    //   showDialog(
-    //     context: context,
-    //     builder: (BuildContext context) {
-    //       return AlertDialog(
-    //         title: Text(
-    //           'Error',
-    //           style: GoogleFonts.saira(
-    //             color: const Color(0xFF29E9FF),
-    //             fontWeight: FontWeight.bold,
-    //           ),
-    //         ),
-    //         content: Text(
-    //           'Por favor seleccione un tipo de gradiente.',
-    //           style: GoogleFonts.saira(
-    //             fontWeight: FontWeight.bold,
-    //             fontSize: 16,
-    //           ),
-    //         ),
-    //         actions: [
-    //           TextButton(
-    //             onPressed: () {
-    //               Navigator.of(context).pop();
-    //             },
-    //             child: Text(
-    //               'OK',
-    //               style: GoogleFonts.saira(
-    //                 fontSize: 16,
-    //                 fontWeight: FontWeight.bold,
-    //                 color: const Color(0xFF29E9FF),
-    //               ),
-    //             ),
-    //           ),
-    //         ],
-    //       );
-    //     },
-    //   );
-    //   return;
-    // }
 
     // Calcular el valor presente
     Map<String, double> resultado = EscalonadoCalculator.calcularValorPresente(seriePagos, tasaInteres/100, nPeriodos, tasaEfectiva/100, tasaIncremento/100, plazoObligacion);
@@ -150,45 +110,49 @@ class _EscalonadoPageState extends State<EscalonadoPage> {
         iconTheme: const IconThemeData(color: Color(0xFF29E9FF)),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(vertical: 30),
+        padding: const EdgeInsets.symmetric(vertical: 7),
         child: Column(
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 1),
-              child: SizedBox(
-                height: 125,
-                width: 125,
-                child: Stack(
-                  fit: StackFit.expand,
-                  clipBehavior: Clip.none,
-                  children: [
-                    Icon(
-                      Remix.nft_fill,
-                      size: 135,
-                      color: Color(0xFF29E9FF),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+              child: Column(
+                children: [
+                  RichText(
+                    textAlign: TextAlign.justify,
+                    text: TextSpan(
+                      children: <TextSpan>[
+                        TextSpan(
+                          text: "Escalonado", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
+                        ),
+                        TextSpan(
+                          text: " es un tipo de gradiente el cual sus valores son constantes durante los periodos de un año," 
+                                " pero que puede aumentar o disminuir en una cantidad fija de dinero o en una tasa constante.", style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                        TextSpan(
+                          text: " Donde P ó VP es valor inicial de la obligación", 
+                          style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
+                        ),
+                      ]
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
-              child: Text(
-                "En gradientes se pueden hallar el Valor Presente (VP) o Valor Futuro (VF)\nDonde P ó VP es valor presente, F ó VF es valor futuro, i es tasa de interés y A es primer pago, G es gradiente y N número de periodos",
-                style: GoogleFonts.saira(
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-                textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20,),
+                  Math.tex(
+                    r'P=A_1\left[\frac{\left(1+i\right)^n-1}{i}\right]\left[\frac{\left(1+TEA\right)^E-\left(1+J\right)}{\left(1+TEA\right)^E\left(1-J\right)}\right]',
+                    textStyle: GoogleFonts.saira(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 10,),
-            InputTextFormField(labelText: "Valor cuota", prefixIcon: Remix.coins_fill, valueText: '', controller: seriePagosController,),
-            InputTextFormField(labelText: "Tasa de Interés por periodo", prefixIcon: Remix.discount_percent_fill, valueText: '', controller: tasaInteresController,),
-            InputTextFormField(labelText: "Número periodos", prefixIcon: Remix.numbers_line, valueText: '', controller: nPeriodosController,),
-            InputTextFormField(labelText: "Tasa efectiva anual", prefixIcon: Remix.percent_line, valueText: '', controller: tasaEfectivaController,),
-            InputTextFormField(labelText: "Tasa incremento", prefixIcon: Remix.swap_line, valueText: '', controller: tasaIncrementoController,),
-            InputTextFormField(labelText: "Plazo obligación", prefixIcon: Remix.calendar_todo_line, valueText: '', controller: plazoObligacionController,),
+            InputTextFormField(labelText: "Valor cuota (A)", prefixIcon: Remix.coins_fill, valueText: '', controller: seriePagosController,),
+            InputTextFormField(labelText: "Tasa de Interés por periodo (i)", prefixIcon: Remix.discount_percent_fill, valueText: '', controller: tasaInteresController,),
+            InputTextFormField(labelText: "Número periodos (n)", prefixIcon: Remix.numbers_line, valueText: '', controller: nPeriodosController,),
+            InputTextFormField(labelText: "Tasa efectiva anual (TEA)", prefixIcon: Remix.percent_line, valueText: '', controller: tasaEfectivaController,),
+            InputTextFormField(labelText: "Tasa incremento (J)", prefixIcon: Remix.swap_line, valueText: '', controller: tasaIncrementoController,),
+            InputTextFormField(labelText: "Plazo obligación (E)", prefixIcon: Remix.calendar_todo_line, valueText: '', controller: plazoObligacionController,),
             const SizedBox(height: 20,),
             Container(
               height: 50,
