@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TirPage extends StatefulWidget {
@@ -25,7 +26,7 @@ class _TirPageState extends State<TirPage> {
         padding: EdgeInsets.all(20.0),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(height: 5),
               RichText(
@@ -41,12 +42,21 @@ class _TirPageState extends State<TirPage> {
                       style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
                     ),
                     TextSpan(
-                      text: "Su fórmula es: ∑(FCi / (1 + TIR)^i) = 0\n",
+                      text: "Su fórmula es:",
                       style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ],
                 ),
               ),
+              const SizedBox(height: 10,),
+              Math.tex(
+                r'\sum \left(\frac{FCi}{\left(1+TIR\right)^i}\right)=0',
+                textStyle: GoogleFonts.saira(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 10,),
               RichText(
                 textAlign: TextAlign.justify,
                 text: TextSpan(
@@ -60,12 +70,21 @@ class _TirPageState extends State<TirPage> {
                       style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.black),
                     ),
                     TextSpan(
-                      text: "Su fórmula es: ∑(FCi / (1 + TD)^i)\n",
+                      text: "Su fórmula es:",
                      style: GoogleFonts.saira(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ],
                 ),
               ),
+              const SizedBox(height: 10,),
+              Math.tex(
+                r'\sum \left(\frac{FCi}{\left(1+TD\right)^i}\right)',
+                textStyle: GoogleFonts.saira(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 10,),
               RichText(
                 textAlign: TextAlign.justify,
                 text: TextSpan(

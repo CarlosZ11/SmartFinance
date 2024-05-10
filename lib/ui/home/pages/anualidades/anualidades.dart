@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -49,176 +50,170 @@ class _AnualidadesPageState extends State<AnualidadesPage> {
           ),
           Padding(
             padding: const EdgeInsets.only(
-              top: 25,
               right: 30,
               left: 30,
               bottom: 12,
             ),
-            child: RichText(
-              textAlign: TextAlign.justify,
-              text: TextSpan(
-                children: <TextSpan>[
-                  TextSpan(
-                    text: " Las anualidades ",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+            child: Column(
+              children: [
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: " Las anualidades ",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text:
+                            "son serie de pagos o depósitos iguales que se realizan o reciben a intervalos regulares durante un período específico de tiempo.\n\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "La Tasa de Interés (i) ",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text:
+                            "Representa la tasa de interés aplicada a la anualidad, expresada como un porcentaje.\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                       TextSpan(
+                        text: " El Número de Períodos (n)",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text:
+                            " Indica la cantidad de períodos en los que se realizarán los pagos o depósitos.\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: " la Renta ",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text:
+                            "Corresponde al pago o depósito que se realiza de manera regular en la anualidad.\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                       TextSpan(
+                        text: "Monto de la Anualidad ",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text:
+                            " Es el valor inicial de la anualidad, en caso de haberlo.\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "Fórmulas:\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text:
+                            "Valor Futuro (VF): Representa el valor acumulado de una anualidad en un momento futuro.\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "Fórmula (Renta) y Formula (Monto):\n",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ],
                   ),
-                  TextSpan(
-                    text:
-                        "son serie de pagos o depósitos iguales que se realizan o reciben a intervalos regulares durante un período específico de tiempo.\n\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                ),
+                Math.tex(
+                  r'VF=\frac{M}{\left[\frac{\left(1+i\right)^n-1}{i}\right]}',
+                  textStyle: GoogleFonts.saira(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
-                  TextSpan(
-                    text: "La Tasa de Interés (i) ",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                ),
+                const SizedBox(height: 20,),
+                Math.tex(
+                  r'VF=R\left[\frac{\left(1+i\right)^n-1}{i}\right]',
+                  textStyle: GoogleFonts.saira(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
-                  TextSpan(
-                    text:
-                        "Representa la tasa de interés aplicada a la anualidad, expresada como un porcentaje.\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
+                ),
+                const SizedBox(height: 10,),
+                const SizedBox(height: 10,),
+                RichText(
+                  textAlign: TextAlign.justify,
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "\nValor Presente (VP): Indica el valor actual de una anualidad, es decir, su valor en el presente.:",
+                        style: GoogleFonts.saira(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ]
                   ),
-                   TextSpan(
-                    text: " El Número de Períodos (n)",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                ),
+                const SizedBox(height: 10,),
+                Math.tex(
+                  r'VP=R\left[\frac{1-\left(1+i\right)^{-n}}{i}\right]',
+                  textStyle: GoogleFonts.saira(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
                   ),
-                  TextSpan(
-                    text:
-                        " Indica la cantidad de períodos en los que se realizarán los pagos o depósitos.\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: " la Renta ",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text:
-                        "Corresponde al pago o depósito que se realiza de manera regular en la anualidad.\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                   TextSpan(
-                    text: "Monto de la Anualidad ",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text:
-                        " Es el valor inicial de la anualidad, en caso de haberlo.\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "Fórmulas:\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text:
-                        "Valor Futuro (VF): Representa el valor acumulado de una anualidad en un momento futuro.\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "Fórmula (Renta):\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "   VF = M * (((1 + i)^n - 1) / i)\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "Fórmula (Monto):\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "    VF = R / (((1 + i)^n - 1) / i)\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text:
-                        "Valor Presente (VP): Indica el valor actual de una anualidad, es decir, su valor en el presente.\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: " Fórmula:\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                  TextSpan(
-                    text: "    VP = R * ((1 - (1 + i)^-n) / i)\n",
-                    style: GoogleFonts.saira(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Row(

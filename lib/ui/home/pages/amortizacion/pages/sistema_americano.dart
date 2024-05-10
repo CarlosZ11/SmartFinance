@@ -1,6 +1,7 @@
 import 'package:calculator_app/ui/widgets/custom_alert.dart';
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -96,7 +97,7 @@ class _SistemaAmericanoState extends State<SistemaAmericano> {
               Padding(
                 padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
                 child: Text(
-                  "Para hallar el Sistema americano se utiliza la siguientes formulas: Pago anual = C * (1 + i * N)  \nDonde C es capital, i es tasa de interés, N es tiempo y Pago anual corresponde a la cantidad que debe",
+                  "Para hallar el Sistema americano se utiliza la siguientes formulas Pago anual:",
                   style: GoogleFonts.saira(
                     fontSize: 15,
                     fontWeight: FontWeight.bold
@@ -104,7 +105,26 @@ class _SistemaAmericanoState extends State<SistemaAmericano> {
                   textAlign: TextAlign.center,
                 ),
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(height: 15,),
+              Math.tex(
+                r'C\:\cdot \:\left(1\:+\:i\:\cdot \:N\right)',
+                textStyle: GoogleFonts.saira(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 15, right: 30, left: 30),
+                child: Text(
+                  "Donde C es capital, i es tasa de interés, N es tiempo y Pago anual corresponde a la cantidad que debe",
+                  style: GoogleFonts.saira(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 10,),
               InputTextFormField(labelText: "Capital", prefixIcon: Remix.exchange_funds_line, valueText: '', controller: capitalController,),
               InputTextFormField(labelText: "Tasa de interes", prefixIcon: Remix.discount_percent_fill, valueText: '', controller: tasaInteresController,),
               Padding(padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 9),

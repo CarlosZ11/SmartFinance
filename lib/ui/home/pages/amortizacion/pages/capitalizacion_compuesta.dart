@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:calculator_app/ui/widgets/custom_alert.dart';
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -73,7 +74,7 @@ class _CapitalizacionCompuestaState extends State<CapitalizacionCompuesta> {
           child: Column(
             children: [
               const Padding(
-                padding: EdgeInsets.only(top: 25),
+                padding: EdgeInsets.only(top: 10),
                 child: SizedBox(
                   height: 125,
                   width: 125,
@@ -93,7 +94,7 @@ class _CapitalizacionCompuestaState extends State<CapitalizacionCompuesta> {
               Padding(
                 padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
                 child: Text(
-                  "Para hallar la Capitalización Compuesta se utiliza la siguiente formula: VF = C * (1 + i) ^ N \nDonde C es capital, i es tasa de interés, N es tiempo y VF responde a el Valor Futuro",
+                  "Para hallar la Capitalización Compuesta se utiliza la siguiente formula:",
                   style: GoogleFonts.saira(
                     fontSize: 15,
                     fontWeight: FontWeight.bold
@@ -101,6 +102,26 @@ class _CapitalizacionCompuestaState extends State<CapitalizacionCompuesta> {
                   textAlign: TextAlign.center,
                 ),
               ),
+              const SizedBox(height: 10,),
+              Math.tex(
+                r'VF=C\left(1+i\right)^n',
+                textStyle: GoogleFonts.saira(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 10, right: 30, left: 30),
+                child: Text(
+                  "Donde C es capital, i es tasa de interés, N es tiempo y VF responde a el Valor Futuro",
+                  style: GoogleFonts.saira(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: 10,),
               const SizedBox(height: 30,),
               InputTextFormField(labelText: "Capital", prefixIcon: Remix.exchange_funds_line, valueText: '', controller: capitalController,),
               InputTextFormField(labelText: "Tasa de interes", prefixIcon: Remix.discount_percent_fill, valueText: '', controller: tasaInteresController,),

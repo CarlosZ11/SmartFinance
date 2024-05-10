@@ -1,6 +1,7 @@
 import 'package:calculator_app/ui/widgets/custom_alert.dart';
 import 'package:calculator_app/ui/widgets/input_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 import 'dart:math';
@@ -96,7 +97,26 @@ class _SistemaFrancesState extends State<SistemaFrances> {
             Padding(
               padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
               child: Text(
-                "Para hallar el Sistema francés se utiliza la siguiente fórmula: Cuota Mensual = (C * i) / (1 - (1 + i)^(-N)), donde C es el capital, i es la tasa de interés y N es el Tiempo.",
+                "Para hallar el Sistema francés se utiliza la siguiente fórmula:",
+                style: GoogleFonts.saira(
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ),
+            const SizedBox(height: 15,),
+            Math.tex(
+              r'Cuota\:Mensual\:=\:\frac{\left(C\:\cdot \:i\right)}{\left(1\:-\:\left(1\:+\:i\right)^{\left(-N\right)}\right)}',
+              textStyle: GoogleFonts.saira(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 25, right: 30, left: 30),
+              child: Text(
+                "donde C es el capital, i es la tasa de interés y N es el Tiempo.",
                 style: GoogleFonts.saira(
                   fontSize: 15,
                   fontWeight: FontWeight.bold,
