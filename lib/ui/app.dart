@@ -1,9 +1,4 @@
 import 'package:calculator_app/ui/home/home.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/pages/capital.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/pages/interes.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/pages/monto.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/pages/tasa_interes.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/pages/tiempo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -23,11 +18,6 @@ class MyApp extends StatelessWidget {
       initialRoute: '/Home',
       routes: {
         '/Home':(context) => const HomePage(),
-        '/MontoPage':(context) => const MontoPage(),
-        '/InteresPage':(context) => const InteresPage(),
-        '/CapitalPage':(context) => const CapitalPage(),
-        '/TasaInteresPage':(context) => const TasaInteresPage(),
-        '/TiempoPage':(context) => const TiempoPage(),
       },
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,

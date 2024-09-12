@@ -38,10 +38,10 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             ),
           ),
           Text(
-            "Tu aliado financiero",
+            "Retiros",
             style: GoogleFonts.saira(
               color: Colors.grey[200],
-              fontSize: 13,
+              fontSize: 16,
             ),
           ),
         ],

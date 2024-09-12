@@ -1,8 +1,11 @@
+import 'package:calculator_app/models/user.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeAppPage extends StatelessWidget {
-  const HomeAppPage({super.key});
+  final Usuario usuarioActual;
+
+  const HomeAppPage({super.key, required this.usuarioActual});
 
   @override
   Widget build(BuildContext context) {
@@ -40,20 +43,28 @@ class HomeAppPage extends StatelessWidget {
           const SizedBox(height: 10,),
           Text(
             textAlign: TextAlign.center,
-            "La calculadora financiera para tus cálculos de Interés simple, Compuesto, Anualidades, Gradientes, Sistemas de amortización y Tasa interna de retorno.",
+            "Cajero multiservicios para el retiro seguro de tu dinero.",
             style: GoogleFonts.saira(
               color: const Color(0xFF171731),
               fontSize: 18,
               fontWeight: FontWeight.w500,
             ),
           ),
-          const SizedBox(height: 40,),
+          Text(
+            "Bienvenido, ${usuarioActual.nombre}",
+            style: GoogleFonts.saira(
+              color: const Color(0xFF171731),
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(height: 20,),
           Container(
-            margin: const EdgeInsets.only(bottom: 10),
-            height: 200,
+            margin: const EdgeInsets.only(bottom: 5),
+            height: 300,
             decoration: const BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/images/Finanzas.png'),
+                image: AssetImage('assets/images/atm.png'),
               ),
             ),
           ),

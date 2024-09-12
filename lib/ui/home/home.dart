@@ -1,13 +1,12 @@
-import 'package:calculator_app/ui/home/pages/amortizacion/amortizacion.dart';
-import 'package:calculator_app/ui/home/pages/gradientes/gradientes.dart';
-import 'package:calculator_app/ui/home/pages/tir/tir.dart';
-import 'package:calculator_app/ui/home/pages/interes_compuesto/interes_compuesto.dart';
-import 'package:calculator_app/ui/home/pages/interes_simple/interes_simple.dart';
-import 'package:calculator_app/ui/home/pages/anualidades/anualidades.dart';
+import 'package:calculator_app/models/user.dart';
+import 'package:calculator_app/ui/home/pages/nequi/nequi_home.dart';
+import 'package:flutter/material.dart';
+import '../Auth/login_page.dart';
+import 'package:calculator_app/ui/home/pages/ahorro_a_la_mano/ahorro_a_la_mano_home.dart';
+import 'package:calculator_app/ui/home/pages/tarjeta/tarjeta_home.dart';
 import 'package:calculator_app/ui/home/pages/my_drawer_header.dart';
 import 'package:calculator_app/ui/widgets/home_page.dart';
 import 'package:calculator_app/ui/widgets/loading_page.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:remixicon/remixicon.dart';
 
@@ -21,10 +20,20 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var currentPage = DrawerSections.homeApp;
   bool isLoading = true;
+  bool isLoggedIn = false; // Nueva variable para controlar el login
   String currentTitle = "inicio";
 
+  // Usuario actual simulado
+  final Usuario usuarioActual = Usuario(
+    nombre: 'Juan Perez',
+    cedula: '1003242813',
+    clave: '1967',
+    numeroTelefono: '3197015408',
+    numeroTarjeta: 'XXXX-XXXX-XXXX-7626',
+  );
+
   @override
-  void initState(){
+  void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 5), () {
       setState(() {
@@ -35,27 +44,34 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_typing_uninitialized_variables
+    // Controlar lo que se muestra según el estado de isLoading y isLoggedIn
+    if (isLoading) {
+      return const LoadingPage();
+    } else if (!isLoggedIn) {
+      return LoginPage(onLoginSuccess: () {
+        setState(() {
+          isLoggedIn = true;
+        });
+      });
+    } else {
+      return buildHomeScaffold();
+    }
+  }
+
+  Scaffold buildHomeScaffold() {
+    // El home original que ya tienes implementado
     var container;
     if (currentPage == DrawerSections.homeApp) {
-      container = const HomeAppPage();
-    } else if (currentPage == DrawerSections.interes_simple) {
-      container = InteresSimplePage();
-    } else if (currentPage == DrawerSections.interes_compuesto) {
-      container = InteresCompuestoPage();
-    } else if (currentPage == DrawerSections.anualidades) {
-      container = const AnualidadesPage();
-    }else if (currentPage == DrawerSections.gradientes) {
-      container = GradientesPage();
-    }else if (currentPage == DrawerSections.amortizacion) {
-      container = AmortizacionPage();
+      container =  HomeAppPage(usuarioActual: usuarioActual);
+    } else if (currentPage == DrawerSections.nequi) {
+      container = AmountSelectionNequiPage(usuarioActual: usuarioActual,);
+    } else if (currentPage == DrawerSections.ahorro_a_la_mano) {
+      container = AmountSelectionAhorroPage(usuarioActual: usuarioActual,);
+    } else if (currentPage == DrawerSections.tarjeta) {
+      container = AmountSelectionTarjetaPage(usuarioActual: usuarioActual,);
     }
-    else if (currentPage == DrawerSections.tir) {
-      container = TirPage();
-    }
-    return isLoading
-      ? const LoadingPage()
-      : Scaffold(
+
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF171731),
         title: Text(
@@ -89,12 +105,9 @@ class _HomePageState extends State<HomePage> {
       // shows the list of menu drawer
       children: [
         menuItem(0, "Inicio", Remix.home_7_fill, currentPage == DrawerSections.homeApp ? true : false),
-        menuItem(1, "Interés Simple", Remix.funds_fill, currentPage == DrawerSections.interes_simple ? true : false),
-        menuItem(2, "Interés Compuesto", Remix.exchange_funds_line,currentPage == DrawerSections.interes_compuesto ? true : false),
-        menuItem(3, "Anualidades", Remix.calendar_todo_fill, currentPage == DrawerSections.anualidades ? true : false),
-        menuItem(4, "Gradientes", Remix.line_chart_line, currentPage == DrawerSections.gradientes ? true : false),
-        menuItem(5, "Amortización", Remix.hand_coin_line, currentPage == DrawerSections.amortizacion ? true : false),
-        menuItem(6, "TIR", Remix.line_chart_line, currentPage == DrawerSections.tir ? true : false),
+        menuItem(1, "Nequi", Remix.wallet_fill, currentPage == DrawerSections.nequi ? true : false),
+        menuItem(2, "Ahorro a la Mano", Remix.coins_fill, currentPage == DrawerSections.ahorro_a_la_mano ? true : false),
+        menuItem(3, "Tarjeta", Remix.visa_fill, currentPage == DrawerSections.tarjeta ? true : false),
       ],
     );
   }
@@ -110,24 +123,14 @@ class _HomePageState extends State<HomePage> {
               currentPage = DrawerSections.homeApp;
               currentTitle = 'Inicio';
             } else if (id == 1) {
-              currentPage = DrawerSections.interes_simple;
-              currentTitle = 'Interés Simple';
+              currentPage = DrawerSections.nequi;
+              currentTitle = 'Nequi';
             } else if (id == 2) {
-              currentPage = DrawerSections.interes_compuesto;
-              currentTitle = 'Interés Compuesto';
+              currentPage = DrawerSections.ahorro_a_la_mano;
+              currentTitle = 'Ahorro a la Mano';
             } else if (id == 3) {
-              currentPage = DrawerSections.anualidades;
-              currentTitle = 'Anualidades';
-            } else if (id == 4) {
-              currentPage = DrawerSections.gradientes;
-              currentTitle = 'Gradientes';
-            } else if (id == 5) {
-              currentPage = DrawerSections.amortizacion;
-              currentTitle = 'Amortización y Cap';
-            }
-            else if (id == 6) {
-              currentPage = DrawerSections.tir;
-              currentTitle = 'TIR';
+              currentPage = DrawerSections.tarjeta;
+              currentTitle = 'Tarjeta';
             }
           });
         },
@@ -163,10 +166,7 @@ class _HomePageState extends State<HomePage> {
 
 enum DrawerSections {
   homeApp,
-  interes_simple,
-  interes_compuesto,
-  anualidades,
-  gradientes,
-  amortizacion,
-  tir
+  nequi,
+  ahorro_a_la_mano,
+  tarjeta,
 }
